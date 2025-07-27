@@ -8,53 +8,62 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 45 25% 98%;
-    --foreground: 25 15% 15%;
+    /* Primary colors - Professional salon theme */
+    --primary: 280 85% 45%; /* Rich purple */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 280 100% 60%; /* Brighter purple for accents */
 
+    /* Secondary colors - Elegant neutrals */
+    --secondary: 210 40% 98%; /* Soft blue-white */
+    --secondary-foreground: 220 14% 25%; /* Dark blue-gray */
+    
+    /* Accent colors - Rose gold highlights */
+    --accent: 15 85% 65%; /* Rose gold */
+    --accent-foreground: 0 0% 100%;
+
+    /* Muted colors - Soft cool tones */
+    --muted: 210 40% 95%; /* Light blue-gray */
+    --muted-foreground: 220 14% 45%; /* Medium blue-gray */
+
+    /* Card colors - Clean whites with coolness */
     --card: 0 0% 100%;
-    --card-foreground: 25 15% 15%;
+    --card-foreground: 220 14% 25%;
 
+    /* Popover colors */
     --popover: 0 0% 100%;
-    --popover-foreground: 25 15% 15%;
+    --popover-foreground: 220 14% 25%;
 
-    --primary: 0 85% 55%;
-    --primary-foreground: 0 0% 98%;
+    /* Border colors */
+    --border: 210 40% 90%; /* Soft blue-gray border */
+    --input: 210 40% 90%;
 
-    --secondary: 120 40% 45%;
-    --secondary-foreground: 0 0% 98%;
+    /* Ring colors for focus states */
+    --ring: 280 85% 45%; /* Primary color for focus rings */
 
-    --muted: 45 20% 95%;
-    --muted-foreground: 25 15% 45%;
+    /* Background colors */
+    --background: 0 0% 100%;
+    --foreground: 220 14% 25%;
 
-    --accent: 35 85% 60%;
-    --accent-foreground: 25 15% 15%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 45 15% 88%;
-    --input: 45 15% 88%;
-    --ring: 0 85% 55%;
+    /* Destructive colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
     --radius: 0.75rem;
-    
-    /* Custom pizzeria design tokens */
-    --pizza-red: 0 85% 55%;
-    --pizza-green: 120 40% 45%;
-    --pizza-orange: 35 85% 60%;
-    --pizza-cream: 45 25% 98%;
-    --pizza-dark: 25 15% 15%;
-    
-    /* Gradients */
-    --gradient-warm: linear-gradient(135deg, hsl(var(--pizza-red)), hsl(var(--pizza-orange)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--pizza-cream)), hsl(45 20% 95%));
-    
-    /* Shadows */
-    --shadow-warm: 0 10px 30px -10px hsl(var(--pizza-red) / 0.3);
-    --shadow-soft: 0 4px 20px -4px hsl(25 15% 15% / 0.1);
-    
-    /* Transitions */
+
+    /* Gradients - Beautiful salon-inspired gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280, 85%, 45%), hsl(280, 100%, 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210, 40%, 98%), hsl(210, 40%, 95%));
+    --gradient-hero: linear-gradient(135deg, hsl(280, 85%, 45%) 0%, hsl(15, 85%, 65%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(210, 40%, 98%) 100%);
+
+    /* Shadows - Elegant depth */
+    --shadow-elegant: 0 10px 30px -10px hsl(280 85% 45% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(220 14% 25% / 0.1);
+    --shadow-glow: 0 0 40px hsl(280 100% 60% / 0.4);
+
+    /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -74,46 +83,56 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 25 15% 8%;
-    --foreground: 45 25% 95%;
+    /* Primary colors - Professional salon theme for dark mode */
+    --primary: 280 85% 55%; /* Slightly brighter purple for dark backgrounds */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 280 100% 70%; /* Even brighter for dark mode accents */
 
-    --card: 25 15% 12%;
-    --card-foreground: 45 25% 95%;
+    /* Background colors - Dark cool tones */
+    --background: 220 14% 4%; /* Very dark blue-gray */
+    --foreground: 0 0% 95%; /* Almost white */
 
-    --popover: 25 15% 12%;
-    --popover-foreground: 45 25% 95%;
+    /* Card colors - Dark with coolness */
+    --card: 220 14% 8%; /* Dark blue-gray cards */
+    --card-foreground: 0 0% 95%;
 
-    --primary: 0 85% 60%;
-    --primary-foreground: 0 0% 98%;
+    /* Popover colors */
+    --popover: 220 14% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --secondary: 120 35% 35%;
-    --secondary-foreground: 45 25% 95%;
+    /* Secondary colors - Dark cool tones */
+    --secondary: 220 14% 15%; /* Dark blue-gray secondary */
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 25 15% 18%;
-    --muted-foreground: 45 15% 65%;
+    /* Muted colors - Dark cool tones */
+    --muted: 220 14% 15%; /* Dark blue-gray muted */
+    --muted-foreground: 0 0% 65%; /* Light gray text */
 
-    --accent: 35 80% 55%;
-    --accent-foreground: 25 15% 8%;
+    /* Accent colors - Rose gold highlights for dark mode */
+    --accent: 15 85% 75%; /* Brighter rose gold for dark backgrounds */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 45 25% 95%;
+    /* Border colors - Subtle dark borders */
+    --border: 220 14% 20%; /* Dark blue-gray border */
+    --input: 220 14% 20%;
 
-    --border: 25 15% 20%;
-    --input: 25 15% 20%;
-    --ring: 0 85% 60%;
-    
-    /* Dark mode pizzeria tokens */
-    --pizza-red: 0 85% 60%;
-    --pizza-green: 120 35% 35%;
-    --pizza-orange: 35 80% 55%;
-    --pizza-cream: 25 15% 8%;
-    --pizza-dark: 45 25% 95%;
-    
-    --gradient-warm: linear-gradient(135deg, hsl(var(--pizza-red)), hsl(var(--pizza-orange)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--pizza-cream)), hsl(25 15% 12%));
-    
-    --shadow-warm: 0 10px 30px -10px hsl(var(--pizza-red) / 0.4);
+    /* Ring colors for focus states */
+    --ring: 280 85% 55%;
+
+    /* Destructive colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Gradients - Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280, 85%, 55%), hsl(280, 100%, 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220, 14%, 15%), hsl(220, 14%, 20%));
+    --gradient-hero: linear-gradient(135deg, hsl(280, 85%, 55%) 0%, hsl(15, 85%, 75%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 14%, 8%) 0%, hsl(220, 14%, 12%) 100%);
+
+    /* Shadows - Glowing effects for dark mode */
+    --shadow-elegant: 0 10px 30px -10px hsl(280 85% 55% / 0.4);
     --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 40px hsl(280 100% 70% / 0.3);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

@@ -6,8 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
-import Speisekarte from "./pages/Speisekarte";
+import Leistungen from "./pages/Leistungen";
 import Oeffnungszeiten from "./pages/Oeffnungszeiten";
+import Terminvergabe from "./pages/Terminvergabe";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,9 +24,9 @@ const App = () => (
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/speisekarte" element={<Speisekarte />} />
+              <Route path="/leistungen" element={<Leistungen />} />
               <Route path="/oeffnungszeiten" element={<Oeffnungszeiten />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="/terminvergabe" element={<Terminvergabe />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
