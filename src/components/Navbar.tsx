@@ -1,28 +1,25 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Home, Scissors, Clock, Calendar, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Home, FileText, Clock } from "lucide-react";
 
 const Navbar = () => {
   const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { path: "/", label: "Home", icon: Home },
-    { path: "/leistungen", label: "Unsere Leistungen", icon: Scissors },
+    { path: "/speisekarte", label: "Speisekarte", icon: FileText },
     { path: "/oeffnungszeiten", label: "Öffnungszeiten", icon: Clock },
-    { path: "/terminvergabe", label: "Terminvergabe", icon: Calendar },
   ];
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm shadow-soft sticky top-0 z-50 border-b border-border">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-2xl font-bold text-primary">
-            Salon Elegante
+          <Link to="/" className="text-2xl font-bold text-pizzeria-red">
+            Bella Pizza
           </Link>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
@@ -31,10 +28,10 @@ const Navbar = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-smooth ${
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActive
-                      ? "text-primary font-medium"
-                      : "text-foreground hover:text-primary"
+                      ? "bg-pizzeria-red text-white shadow-warm"
+                      : "text-pizzeria-dark hover:bg-pizzeria-cream hover:text-pizzeria-red"
                   }`}
                 >
                   <Icon size={18} />
@@ -44,46 +41,28 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
+          {/* Mobile Menu */}
+          <div className="md:hidden flex items-center space-x-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`p-2 rounded-lg transition-all duration-300 ${
+                    isActive
+                      ? "bg-pizzeria-red text-white"
+                      : "text-pizzeria-dark hover:bg-pizzeria-cream"
+                  }`}
+                >
+                  <Icon size={20} />
+                </Link>
+              );
+            })}
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-border bg-card/95 backdrop-blur-sm absolute left-0 right-0 top-16 shadow-elegant">
-            <div className="container mx-auto px-6 py-4 space-y-2">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = location.pathname === item.path;
-                
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-3 py-3 rounded-lg transition-smooth ${
-                      isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "text-foreground hover:bg-muted hover:text-primary"
-                    }`}
-                  >
-                    <Icon size={20} />
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );

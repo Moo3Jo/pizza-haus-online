@@ -1,51 +1,56 @@
-import { Link } from "react-router-dom";
+import { MapPin, Phone, Clock } from "lucide-react";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-6 py-12">
+    <footer className="bg-pizzeria-dark text-pizzeria-cream">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Restaurant Info */}
           <div>
-            <h3 className="text-lg font-semibold text-primary mb-4">Salon Elegante</h3>
-            <p className="text-muted-foreground">
-              Ihr professioneller Friseursalon für moderne Styling und klassische Eleganz seit 2010.
+            <h3 className="text-xl font-bold text-pizzeria-red mb-4">Bella Pizza</h3>
+            <p className="text-muted-foreground mb-4">
+              Authentische italienische Pizza seit 1985. Frische Zutaten,
+              traditionelle Rezepte und viel Amore in jeder Scheibe.
             </p>
           </div>
-          
+
+          {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Schnellzugriff</h4>
+            <h4 className="font-semibold mb-4 text-pizzeria-orange">Kontakt</h4>
             <div className="space-y-2">
-              <Link to="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                Home
-              </Link>
-              <Link to="/leistungen" className="block text-muted-foreground hover:text-primary transition-colors">
-                Unsere Leistungen
-              </Link>
-              <Link to="/oeffnungszeiten" className="block text-muted-foreground hover:text-primary transition-colors">
-                Öffnungszeiten
-              </Link>
-              <Link to="/terminvergabe" className="block text-muted-foreground hover:text-primary transition-colors">
-                Terminvergabe
-              </Link>
+              <div className="flex items-center gap-2">
+                <MapPin size={16} className="text-pizzeria-red" />
+                <span className="text-sm">Musterstraße 123, 12345 Musterstadt</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone size={16} className="text-pizzeria-red" />
+                <span className="text-sm">0123 / 456 789</span>
+              </div>
             </div>
           </div>
-          
+
+          {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Kontakt</h4>
-            <div className="space-y-2 text-muted-foreground">
-              <p>📍 Schönheitstraße 45, 10115 Berlin</p>
-              <p>📞 +49 30 123456789</p>
-              <p>✉️ info@salon-elegante.de</p>
+            <h4 className="font-semibold mb-4 text-pizzeria-orange">Öffnungszeiten</h4>
+            <div className="space-y-1 text-sm">
+              <div className="flex justify-between">
+                <span>Mo - Fr:</span>
+                <span>11:00 - 22:00</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Sa - So:</span>
+                <span>12:00 - 23:00</span>
+              </div>
             </div>
           </div>
         </div>
-        
-        <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-muted-foreground">
-            © 2024 Salon Elegante. Alle Rechte vorbehalten.
-          </p>
+
+        <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; 2024 Bella Pizza. Alle Rechte vorbehalten.</p>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

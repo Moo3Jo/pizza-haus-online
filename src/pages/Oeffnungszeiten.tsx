@@ -1,96 +1,145 @@
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MapPin, Phone, Clock, Calendar, Navigation } from "lucide-react";
 
-export default function Oeffnungszeiten() {
+const Oeffnungszeiten = () => {
+  const openingHours = [
+    { day: "Montag", hours: "11:00 - 22:00" },
+    { day: "Dienstag", hours: "11:00 - 22:00" },
+    { day: "Mittwoch", hours: "11:00 - 22:00" },
+    { day: "Donnerstag", hours: "11:00 - 22:00" },
+    { day: "Freitag", hours: "11:00 - 23:00" },
+    { day: "Samstag", hours: "12:00 - 23:00" },
+    { day: "Sonntag", hours: "12:00 - 22:00" },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      {/* Header Section */}
-      <section className="py-20 bg-gradient-primary text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-5xl font-bold mb-6">Öffnungszeiten</h1>
-          <p className="text-xl text-white/90">
-            Besuchen Sie uns zu diesen Zeiten für Ihr perfektes Styling
+      <div className="container mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-pizzeria-dark mb-4">
+            Öffnungszeiten & Kontakt
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Besuchen Sie uns in unserem gemütlichen Restaurant oder 
+            bestellen Sie bequem für die Abholung.
           </p>
         </div>
-      </section>
 
-      {/* Content */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 shadow-elegant">
-              <h2 className="text-2xl font-bold mb-6 text-primary text-center">
-                Salon Elegante
-              </h2>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-center border-b border-border pb-2">
-                  <span className="font-medium">Montag</span>
-                  <span className="text-muted-foreground">Geschlossen</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-border pb-2">
-                  <span className="font-medium">Dienstag - Freitag</span>
-                  <span className="text-muted-foreground">09:00 - 19:00</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-border pb-2">
-                  <span className="font-medium">Samstag</span>
-                  <span className="text-muted-foreground">08:00 - 16:00</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-medium">Sonntag</span>
-                  <span className="text-muted-foreground">Geschlossen</span>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {/* Opening Hours */}
+          <Card className="p-8 shadow-warm">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-pizzeria-red rounded-full flex items-center justify-center">
+                <Clock size={24} className="text-white" />
               </div>
-              
-              <div className="mt-8 p-4 bg-accent/10 rounded-lg">
-                <p className="text-sm text-center text-muted-foreground">
-                  <strong>Hinweis:</strong> Termine nach Vereinbarung auch außerhalb der Öffnungszeiten möglich.
-                  Kontaktieren Sie uns für individuelle Absprachen.
+              <h2 className="text-2xl font-bold text-pizzeria-dark">Öffnungszeiten</h2>
+            </div>
+            
+            <div className="space-y-4">
+              {openingHours.map((item, index) => {
+                const isWeekend = item.day === "Samstag" || item.day === "Sonntag";
+                return (
+                  <div 
+                    key={index}
+                    className={`flex justify-between items-center py-3 px-4 rounded-lg transition-colors ${
+                      isWeekend ? "bg-pizzeria-orange/10" : "bg-muted/50"
+                    }`}
+                  >
+                    <span className="font-medium text-pizzeria-dark">{item.day}</span>
+                    <span className="text-pizzeria-red font-semibold">{item.hours}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-6 p-4 bg-pizzeria-green/10 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <Calendar size={16} className="text-pizzeria-green" />
+                <span className="font-medium text-pizzeria-dark">Besondere Zeiten</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                An Feiertagen können die Öffnungszeiten abweichen. 
+                Rufen Sie uns gerne an!
+              </p>
+            </div>
+          </Card>
+
+          {/* Contact Information */}
+          <Card className="p-8 shadow-warm">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-pizzeria-green rounded-full flex items-center justify-center">
+                <MapPin size={24} className="text-white" />
+              </div>
+              <h2 className="text-2xl font-bold text-pizzeria-dark">Kontakt & Adresse</h2>
+            </div>
+
+            <div className="space-y-6">
+              {/* Address */}
+              <div>
+                <h3 className="font-semibold text-pizzeria-dark mb-2 flex items-center gap-2">
+                  <MapPin size={18} className="text-pizzeria-red" />
+                  Adresse
+                </h3>
+                <p className="text-muted-foreground ml-6">
+                  Bella Pizza<br />
+                  Musterstraße 123<br />
+                  12345 Musterstadt
                 </p>
               </div>
-            </Card>
 
-            <Card className="p-8 shadow-elegant">
-              <h2 className="text-2xl font-bold mb-6 text-primary text-center">
-                Kontakt & Anfahrt
-              </h2>
-              
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">📍 Adresse</h3>
-                  <p className="text-muted-foreground">
-                    Schönheitstraße 45<br />
-                    10115 Berlin
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">📞 Telefon</h3>
-                  <p className="text-muted-foreground">+49 30 123456789</p>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">✉️ E-Mail</h3>
-                  <p className="text-muted-foreground">info@salon-elegante.de</p>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">🚗 Parkmöglichkeiten</h3>
-                  <p className="text-muted-foreground">
-                    Parkplätze in der Tiefgarage und kostenpflichtige Straßenparkplätze
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">🚌 Öffentliche Verkehrsmittel</h3>
-                  <p className="text-muted-foreground">
-                    U-Bahn U6 Friedrichstraße - 3 Minuten Fußweg
-                  </p>
-                </div>
+              {/* Phone */}
+              <div>
+                <h3 className="font-semibold text-pizzeria-dark mb-2 flex items-center gap-2">
+                  <Phone size={18} className="text-pizzeria-red" />
+                  Telefon
+                </h3>
+                <p className="text-muted-foreground ml-6">
+                  <a href="tel:+491234567890" className="hover:text-pizzeria-red transition-colors">
+                    0123 / 456 789
+                  </a>
+                </p>
               </div>
-            </Card>
-          </div>
+
+              {/* Directions */}
+              <div className="pt-4">
+                <Button variant="outline" className="w-full" size="lg">
+                  <Navigation size={20} />
+                  Route berechnen
+                </Button>
+              </div>
+            </div>
+
+            {/* Additional Info */}
+            <div className="mt-6 p-4 bg-pizzeria-orange/10 rounded-lg">
+              <h4 className="font-medium text-pizzeria-dark mb-2">Gut zu wissen</h4>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Kostenlose Parkplätze vor dem Restaurant</li>
+                <li>• Barrierefrei zugänglich</li>
+                <li>• Lieferservice im Umkreis von 5km</li>
+                <li>• Reservierungen telefonisch möglich</li>
+              </ul>
+            </div>
+          </Card>
         </div>
-      </section>
+
+        {/* CTA Section */}
+        <div className="text-center mt-12">
+          <Card className="max-w-lg mx-auto p-6 bg-gradient-warm text-white shadow-warm">
+            <h3 className="text-xl font-bold mb-2">Jetzt bestellen!</h3>
+            <p className="mb-4 opacity-90">
+              Rufen Sie uns an und bestellen Sie Ihre Lieblingspizza zur Abholung.
+            </p>
+            <Button variant="secondary" size="lg">
+              <Phone size={20} />
+              0123 / 456 789
+            </Button>
+          </Card>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default Oeffnungszeiten;
